@@ -1,0 +1,19 @@
+<div class='row'>
+    <div class='col-md-4'>
+      <app-wine-list [displayCode]="displayCode$ | async"
+                       [wines]="wines$ | async"
+                       [selectedWine]="selectedWine$ | async"
+                       [errorMessage]="errorMessage$ | async"
+                       (displayCodeChanged)="checkChanged()"
+                       (initializeNewWine)="newWine()"
+                       (wineWasSelected)="wineSelected($any($event))"></app-wine-list>
+    </div>
+    <!-- <div class='col-md-8'>
+      <app-wine-edit [selectedWine]="selectedWine$ | async"
+                       [errorMessage]="errorMessage$ | async"
+                       (clearCurrent)="clearWine()"
+                       (update)="updateWine($any($event))"
+                       (delete)="deleteWine($any($event))"
+                       (create)="saveWine($any($event))"></app-wine-edit>
+    </div> -->
+  </div>

@@ -1,0 +1,32 @@
+<div class="card">
+
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body"
+         *ngIf="wines">
+      <div class="list-group">
+        <button class="list-group-item list-group-item-action rounded-0"
+                *ngFor="let wine of wines"
+                [ngClass]="{'active': wine?.id === selectedWine?.id}"
+                (click)="wineSelected(wine)">{{ wine.wineryName}}: {{wine.wineName }}
+        </button>
+      </div>
+    </div>
+  
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-4 text-right">
+          <button class="btn btn-primary"
+                  (click)="newWine()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errorMessage"
+       class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>

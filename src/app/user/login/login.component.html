@@ -1,0 +1,10 @@
+<div class='row'>
+    <app-verify-user [users]="users$ | async"
+                     [selectedUser]="selectedUser$ | async"
+                     (initializeReturningUser)="returningUser()"
+                     (userWasLoggedIn)="userWasLoggedIn()">
+
+    </app-verify-user>
+</div> 
+
+       
