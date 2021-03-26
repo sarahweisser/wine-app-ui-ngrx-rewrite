@@ -1,7 +1,7 @@
 <div class='row'>
     <app-verify-user [users]="users$ | async"
                      [selectedUser]="selectedUser$ | async"
-                     (initializeReturningUser)="returningUser()"
+                     (setCurrentUser)="setCurrentUser()"
                      (userWasLoggedIn)="userWasLoggedIn()">
 
     </app-verify-user>

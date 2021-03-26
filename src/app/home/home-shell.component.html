@@ -1,2 +1,10 @@
-<welcome-menu [isLoggedIn]="isLoggedIn$ | async"></welcome-menu>
-<welcome [isLoggedIn]="isLoggedIn$ | async"></welcome>
+<welcome-menu [isLoggedIn]="isLoggedIn$ | async"
+              (userLogIn)="userLogIn()">
+</welcome-menu>
+
+<div class="container main-content">
+    <welcome [isLoggedIn]="isLoggedIn$ | async"
+             (userLogIn)="userLogIn()">
+    </welcome>
+</div>
+

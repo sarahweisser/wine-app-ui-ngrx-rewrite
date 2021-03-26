@@ -8,6 +8,5 @@ export interface User {
     lastName: string;
     title?: string;
     email: string;
-    isLoggedIn?: boolean;
 
 }

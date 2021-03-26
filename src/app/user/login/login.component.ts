@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
   errorMessage$: Observable<string>;
   selectedUser$: Observable<User>;
 
-  constructor(private userstore: Store<State>, private homeStore: Store<State>, private router: Router) { }
+  constructor (
+    private userstore: Store<State>,
+    private homeStore: Store<State>,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.users$ = this.userstore.select(getUsers);
@@ -42,8 +46,8 @@ export class LoginComponent implements OnInit {
   //   this.homeStore.dispatch(HomePageActions.logInUser({ isLoggedIn: true }));
   // }
 
-  returningUser() {
-    this.userstore.dispatch(UserPageActions.initializeReturningUser());
+  setCurrentUser() {
+    this.userstore.dispatch(UserPageActions.setCurrentUser());
   }
 
   userWasLoggedIn() {

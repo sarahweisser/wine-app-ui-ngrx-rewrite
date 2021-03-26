@@ -5,7 +5,7 @@ export const loadUsers = createAction(
   '[User Page] Load'
 );
 
-export const initializeReturningUser = createAction(
-  '[User Page] Initialize Returning User'
+export const setCurrentUser = createAction(
+  '[User Page] Set Current User'
 );
 
