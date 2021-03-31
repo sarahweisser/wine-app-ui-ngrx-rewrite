@@ -1,7 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { AuthService } from '../user/auth.service';
+import { getCurrentUser, State } from '../user/state';
+import { User } from '../user/user';
+import { HomePageActions } from './state/actions';
 
 @Component({
   selector: 'welcome-menu',
@@ -9,18 +13,17 @@ import { AuthService } from '../user/auth.service';
 })
 export class MenuComponent implements OnInit {
   pageTitle = 'WINE APP';
+  selectedUser$: Observable<User>;
 
   @Input() isLoggedIn: boolean;
+  @Output() logUserOut = new EventEmitter<void>();
 
-  get userName(): string {
-    if (this.authService.currentUser) {
-      return this.authService.currentUser.firstName;
-    }
-  }
-
-  constructor ( private router: Router, private authService: AuthService ) { }
+  constructor ( private router: Router,
+                private userstore: Store<State>,
+                private homeStore: Store<State>) { }
 
   ngOnInit() {
+    this.selectedUser$ = this.userstore.select(getCurrentUser);
   }
 
   register() {
@@ -29,7 +32,7 @@ export class MenuComponent implements OnInit {
   }
 
   logOut(): void {
-    // TODO
+    this.homeStore.dispatch(HomePageActions.setIsLoggedIn({ isLoggedIn: false }));
     this.router.navigate(['/home']);
   }
 }

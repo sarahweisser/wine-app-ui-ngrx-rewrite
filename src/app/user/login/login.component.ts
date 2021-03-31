@@ -42,16 +42,13 @@ export class LoginComponent implements OnInit {
   checkChanged(): void {
   }
 
-  // logInUser(): void {
-  //   this.homeStore.dispatch(HomePageActions.logInUser({ isLoggedIn: true }));
-  // }
-
   setCurrentUser() {
     this.userstore.dispatch(UserPageActions.setCurrentUser());
   }
 
   userWasLoggedIn() {
-    this.homeStore.dispatch(HomePageActions.logInUser({ isLoggedIn: true }));
+    this.homeStore.dispatch(HomePageActions.setIsLoggedIn({ isLoggedIn: true }));
+    this.setCurrentUser();
     this.router.navigate(['home']);
   }
 

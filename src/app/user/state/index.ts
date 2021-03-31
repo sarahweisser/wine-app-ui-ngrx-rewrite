@@ -37,7 +37,6 @@ export const getCurrentUser = createSelector(
 );
 
 export const getUsers = createSelector(
-
     getUserFeatureState,
     state => state.users
 );

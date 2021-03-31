@@ -12,18 +12,22 @@ import { UserPageActions } from '../user/state/actions';
 export class HomeShellComponent implements OnInit {
   
   isLoggedIn$: Observable<boolean>;
-  
+
   ngOnInit() {
       this.isLoggedIn$ = this.homeStore.select(getIsLoggedIn);
   }
 
   userLogIn(): void {
-    this.homeStore.dispatch(HomePageActions.logInUser({ isLoggedIn: true }));
+    this.homeStore.dispatch(HomePageActions.setIsLoggedIn({ isLoggedIn: true }));
     // TODO Check for user name and pass in users
     // TODO security/encryption of any sensitive data
     // TODO set current user to user that was logged in
     // using mock data for now as placeholder for ui display
     this.userstore.dispatch(UserPageActions.setCurrentUser());
+  }
+
+  logUserOut(): void {
+    this.homeStore.dispatch(HomePageActions.setIsLoggedIn({ isLoggedIn: false }));
   }
 
   constructor (

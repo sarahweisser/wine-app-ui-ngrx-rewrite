@@ -13,10 +13,10 @@ const initialState: HomeState = {
 export const homeReducer = createReducer<HomeState>(
     initialState,
     // TODO
-    on(HomePageActions.logInUser, (state): HomeState => {
+    on(HomePageActions.setIsLoggedIn, (state, action): HomeState => {
         return {
           ...state,
-          isLoggedIn: true
+          isLoggedIn: action.isLoggedIn
         };
     })
 )
